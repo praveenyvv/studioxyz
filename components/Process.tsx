@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Search, Figma, Code2, Rocket } from "lucide-react";
+import { Search, PenLine, Code2, Rocket } from "lucide-react";
 
 const steps = [
   {
@@ -14,7 +14,7 @@ const steps = [
       "We dig into your problem before writing a single line of code. Understanding the why matters more than the how.",
   },
   {
-    icon: Figma,
+    icon: PenLine,
     number: "02",
     title: "Design",
     description:
