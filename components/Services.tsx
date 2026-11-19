@@ -4,51 +4,57 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  Globe,
-  Smartphone,
-  LayoutDashboard,
-  Zap,
-  Palette,
+  Database,
   Cpu,
+  ShoppingBag,
+  Sparkles,
+  Smartphone,
+  Workflow,
+  ArrowUpRight,
 } from "lucide-react";
 
 const services = [
   {
-    icon: Globe,
-    title: "Web Development",
+    icon: Database,
+    title: "Enterprise ERP & Billing Engines",
     description:
-      "Fast, clean websites that look great and work perfectly on every device.",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Web Applications",
-    description:
-      "Complex tools, dashboards, and platforms built for real workflows.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description:
-      "iOS and Android apps that feel native and solve a clear user need.",
-  },
-  {
-    icon: Zap,
-    title: "Automation & APIs",
-    description:
-      "Backend systems, integrations, and automations that save hours every week.",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description:
-      "Interfaces that are easy to use, not just good to look at.",
+      "Automated cloud invoicing, balance ledgers, inventory reconciliation, and multi-user access tailored to your specific commercial workflow.",
+    tag: "Core Specialty",
   },
   {
     icon: Cpu,
-    title: "IoT Solutions",
+    title: "Industrial IoT & Hardware Telemetry",
     description:
-      "Connected hardware and software systems. Currently expanding — coming soon.",
-    comingSoon: true,
+      "Bridging machine sensors and microcontrollers with cloud analytics. Real-time factory floor dashboards, alerts, and remote device management.",
+    tag: "Hardware + Cloud",
+  },
+  {
+    icon: ShoppingBag,
+    title: "E-Commerce & Digital Storefronts",
+    description:
+      "Blazing-fast modern online shopping platforms, instant UPI/Card payments, automated WhatsApp order receipts, and live inventory sync.",
+    tag: "Conversion-Focused",
+  },
+  {
+    icon: Sparkles,
+    title: "High-Impact Brand Flagship Websites",
+    description:
+      "Cinematic, interactive web platforms built for manufacturing, consulting, and B2B enterprises seeking international buyer trust.",
+    tag: "Brand Authority",
+  },
+  {
+    icon: Workflow,
+    title: "Custom Web Applications & APIs",
+    description:
+      "Full-stack internal portals, customer dashboards, automated PDF reporting, and secure REST/GraphQL backend architecture.",
+    tag: "Full-Stack",
+  },
+  {
+    icon: Smartphone,
+    title: "Cross-Platform Mobile Apps",
+    description:
+      "Performant iOS and Android mobile solutions that provide intuitive mobile interfaces for your on-field staff or customers.",
+    tag: "iOS & Android",
   },
 ];
 
@@ -57,32 +63,28 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" ref={ref} className="py-28 px-6">
+    <section id="services" ref={ref} className="py-24 px-6 relative bg-slate-50/60 border-y border-slate-200/70">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-16"
-        >
-          <span className="text-xs font-medium text-[#3B82F6] tracking-widest uppercase">
-            Services
-          </span>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-700 uppercase tracking-wider mb-4">
+            Our Service Suite
+          </div>
           <h2
-            className="text-4xl md:text-5xl font-bold mt-4 max-w-xl leading-tight"
+            className="text-3xl sm:text-5xl font-bold text-slate-950 tracking-tight leading-tight"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            What we build
+            Engineering depth across
+            <br />
+            <span className="text-blue-600">hardware, cloud, and web.</span>
           </h2>
-          <p className="text-[#888] mt-4 max-w-md">
-            From a simple landing page to a full product — if it runs on a
-            screen, we can build it.
+          <p className="text-slate-600 text-base sm:text-lg mt-4 leading-relaxed font-normal">
+            Whether building an end-to-end industrial software suite or designing a sleek commercial application, we maintain rigorous engineering standards from day one.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
@@ -91,29 +93,34 @@ export default function Services() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className={`group relative bg-[#111] border rounded-2xl p-6 hover:border-[#3B82F6]/30 hover:bg-[#111]/80 transition-all duration-300 ${
-                  service.comingSoon
-                    ? "border-white/5 opacity-60"
-                    : "border-white/5"
-                }`}
+                className="group relative bg-white rounded-2xl border border-slate-200/90 p-7 shadow-xs hover:shadow-xl hover:border-blue-400/80 transition-all duration-300 flex flex-col justify-between"
               >
-                {service.comingSoon && (
-                  <span className="absolute top-4 right-4 text-[10px] font-medium bg-[#3B82F6]/10 text-[#3B82F6] border border-[#3B82F6]/20 px-2 py-0.5 rounded-full">
-                    Soon
-                  </span>
-                )}
-                <div className="w-10 h-10 rounded-xl bg-[#3B82F6]/10 flex items-center justify-center mb-4 group-hover:bg-[#3B82F6]/20 transition-colors duration-300">
-                  <Icon size={18} className="text-[#3B82F6]" />
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                      <Icon size={22} />
+                    </div>
+                    <span className="text-[11px] font-semibold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-full border border-slate-200/60">
+                      {service.tag}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="text-lg font-bold text-slate-950 mb-2.5 group-hover:text-blue-600 transition-colors"
+                    style={{ fontFamily: "var(--font-space-grotesk)" }}
+                  >
+                    {service.title}
+                  </h3>
+
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                    {service.description}
+                  </p>
                 </div>
-                <h3
-                  className="text-base font-semibold text-white mb-2"
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
-                >
-                  {service.title}
-                </h3>
-                <p className="text-sm text-[#666] leading-relaxed">
-                  {service.description}
-                </p>
+
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform duration-200">
+                  <span>Inquire about this capability</span>
+                  <ArrowUpRight size={14} className="ml-1" />
+                </div>
               </motion.div>
             );
           })}

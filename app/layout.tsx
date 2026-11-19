@@ -14,9 +14,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "StudioXYZ — We find your problem. We build the fix.",
+  title: "StudioXYZ — Engineering & Digital Product Studio",
   description:
-    "A software engineering studio from Visakhapatnam building websites, web apps, mobile apps, and custom software solutions that solve real user problems.",
+    "We engineer high-impact ERP systems, Industrial IoT ecosystems, eCommerce platforms, and custom digital software solutions. Built by engineers in Visakhapatnam.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-[#0A0A0A] text-white antialiased`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-[#F8FAFC] text-slate-900 antialiased selection:bg-blue-600 selection:text-white`}
       >
         {children}
       </body>
