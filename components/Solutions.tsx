@@ -8,7 +8,6 @@ import {
   ShoppingBag,
   Sparkles,
   Layers,
-  ArrowRight,
   CheckCircle2,
   AlertCircle,
   TrendingUp,
@@ -17,7 +16,10 @@ import {
   Smartphone,
   Globe,
   Workflow,
+  Zap,
+  MessageSquare,
 } from "lucide-react";
+import BillingDemoModal from "./BillingDemoModal";
 
 interface SolutionItem {
   id: string;
@@ -30,10 +32,12 @@ interface SolutionItem {
   realWorldImpact: string[];
   deliverables: string[];
   badge?: string;
-  visualMockup: React.ReactNode;
+  visualMockup: (onOpenDemo?: () => void) => React.ReactNode;
 }
 
 export default function Solutions() {
+  const [isBillingModalOpen, setIsBillingModalOpen] = useState(false);
+
   const solutions: SolutionItem[] = [
     {
       id: "erp",
@@ -56,15 +60,19 @@ export default function Solutions() {
         "Client Management & Payment Reminders",
         "Offline-Resilient Cloud Architecture",
       ],
-      visualMockup: (
-        <div className="bg-slate-900 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3">
+      visualMockup: (onOpenDemo) => (
+        <div
+          onClick={onOpenDemo}
+          className="bg-slate-900 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3 cursor-pointer group hover:border-blue-400 transition-all"
+        >
           <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
               <Receipt size={14} className="text-blue-400" />
               Cloud Billing &middot; #INV-9284
             </span>
-            <span className="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded-full font-mono">
-              ✓ Synced (0 Lost Data)
+            <span className="bg-emerald-500/20 text-emerald-300 text-[10px] px-2 py-0.5 rounded-full font-mono flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Click to Test Live Demo
             </span>
           </div>
           <div className="bg-slate-950 p-3 rounded-xl border border-slate-800/80 space-y-2 text-xs">
@@ -81,9 +89,9 @@ export default function Solutions() {
               <span className="text-emerald-400 font-mono">₹1,74,640</span>
             </div>
           </div>
-          <div className="bg-blue-950/60 border border-blue-800/50 rounded-xl p-2.5 text-[11px] text-blue-200 flex items-center justify-between">
-            <span>📲 Auto-WhatsApp PDF sent to client</span>
-            <span className="text-emerald-400 font-mono text-[10px]">Delivered</span>
+          <div className="bg-blue-950/60 border border-blue-800/50 rounded-xl p-2.5 text-[11px] text-blue-200 flex items-center justify-between group-hover:bg-blue-900/60 transition-colors">
+            <span>⚡ Click to launch interactive billing engine</span>
+            <span className="text-emerald-400 font-mono text-[10px]">Try Now &rarr;</span>
           </div>
         </div>
       ),
@@ -110,7 +118,7 @@ export default function Solutions() {
         "Automated SMS/WhatsApp Threshold Alerts",
         "Edge-to-Cloud Predictive Maintenance Analytics",
       ],
-      visualMockup: (
+      visualMockup: () => (
         <div className="bg-slate-950 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3 font-mono">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
             <span className="text-emerald-400 flex items-center gap-1.5">
@@ -166,7 +174,7 @@ export default function Solutions() {
         "Real-time Inventory & Stock Sync Across Warehouses",
         "Automated Order Confirmation via WhatsApp & Email",
       ],
-      visualMockup: (
+      visualMockup: () => (
         <div className="bg-slate-900 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
@@ -221,7 +229,7 @@ export default function Solutions() {
         "Optimized Technical SEO & Core Web Vitals 95+",
         "Direct Inbound Inquiry & CRM Funnels",
       ],
-      visualMockup: (
+      visualMockup: () => (
         <div className="bg-slate-900 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
@@ -274,7 +282,7 @@ export default function Solutions() {
         "Third-party API Integrations & Webhooks",
         "Full Source Code & Database Ownership",
       ],
-      visualMockup: (
+      visualMockup: () => (
         <div className="bg-slate-900 rounded-2xl p-4 text-white border border-slate-800 shadow-xl space-y-3">
           <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs">
             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
@@ -310,6 +318,11 @@ export default function Solutions() {
 
   return (
     <section id="solutions" className="py-12 px-6 relative">
+      <BillingDemoModal
+        isOpen={isBillingModalOpen}
+        onClose={() => setIsBillingModalOpen(false)}
+      />
+
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8">
@@ -325,7 +338,7 @@ export default function Solutions() {
             <span className="text-blue-600">We solve operational bottlenecks.</span>
           </h2>
           <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-normal">
-            From fragile paper logbooks to factory machine telemetry — explore how our engineering solves real commercial problems.
+            From fragile paper logbooks and crashed desktop software to factory machine telemetry — explore how our engineering solves real commercial problems.
           </p>
         </div>
 
@@ -386,9 +399,31 @@ export default function Solutions() {
                   </div>
                 </div>
 
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-5 font-normal">
                   {activeSolution.tagline}
                 </p>
+
+                {/* Specific Action Buttons for ERP & Billing */}
+                {activeSolution.id === "erp" && (
+                  <div className="flex flex-wrap gap-2.5 mb-5">
+                    <button
+                      onClick={() => setIsBillingModalOpen(true)}
+                      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+                    >
+                      <Zap size={14} className="text-amber-300" />
+                      <span>⚡ Test Interactive Billing Demo</span>
+                    </button>
+                    <a
+                      href="https://wa.me/917569965052?text=Hi%20StudioXYZ!%20Your%20team%20member%20visited%20my%20office%20regarding%20a%20custom%20billing%20webapp.%20I'd%20like%20to%20discuss%20pricing%20and%20timeline%20for%20my%20business."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-800 border border-emerald-300 hover:bg-emerald-100 font-semibold text-xs px-3.5 py-2.5 rounded-xl transition-all"
+                    >
+                      <MessageSquare size={13} className="text-emerald-600" />
+                      <span>WhatsApp Lead Engineer About Billing</span>
+                    </a>
+                  </div>
+                )}
 
                 {/* Problem vs Solution quick tags */}
                 <div className="grid sm:grid-cols-2 gap-3">
@@ -415,11 +450,22 @@ export default function Solutions() {
 
               {/* Visual Mockup Container */}
               <div className="lg:col-span-5">
-                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                  <span>Interactive System Preview</span>
+                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
+                  <span className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                    <span>Interactive System Preview</span>
+                  </span>
+                  {activeSolution.id === "erp" && (
+                    <span className="text-blue-600 font-semibold font-sans cursor-pointer hover:underline" onClick={() => setIsBillingModalOpen(true)}>
+                      Click to Test &rarr;
+                    </span>
+                  )}
                 </div>
-                {activeSolution.visualMockup}
+                {activeSolution.visualMockup(() => {
+                  if (activeSolution.id === "erp") {
+                    setIsBillingModalOpen(true);
+                  }
+                })}
               </div>
             </div>
 

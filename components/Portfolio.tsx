@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Receipt, Radio, Sparkles } from "lucide-react";
+import { ExternalLink, Receipt, Radio, Zap, MessageSquare } from "lucide-react";
 import LiveWebsitePreview from "./LiveWebsitePreview";
+import BillingDemoModal from "./BillingDemoModal";
 
 interface Project {
   name: string;
@@ -16,11 +18,14 @@ interface Project {
   displayDomain?: string;
   comingSoon?: boolean;
   visualPreview?: React.ReactNode;
+  onOpenDemo?: () => void;
+  whatsappMessage?: string;
 }
 
 export default function Portfolio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [isBillingModalOpen, setIsBillingModalOpen] = useState(false);
 
   const projects: Project[] = [
     {
@@ -64,16 +69,21 @@ export default function Portfolio() {
       displayDomain: "clstechai.com",
     },
     {
-      name: "Cloud ERP & Automated Invoicing Suite",
-      category: "Business Operations & Automation",
-      type: "Internal Solution",
+      name: "Commercial Cloud ERP & Invoicing Engine",
+      category: "Business Operations & Multi-Device Sync",
+      type: "Production Deployment",
       description:
-        "Custom cloud ledger and invoicing software engineered to eliminate manual paper bill books and prevent catastrophic data loss with automatic continuous cloud backups and WhatsApp receipts.",
-      tags: ["Cloud ERP", "Automated Billing", "Ledger Sync"],
+        "Commercial cloud billing & multi-device ledger system. Replaced crash-prone desktop software across 12,000+ invoices with automatic continuous cloud sync, 18% GST ledger reconciliation, zero lost data, and direct WhatsApp PDF invoice dispatch.",
+      tags: ["Cloud Billing", "12,000+ Invoices", "WhatsApp GST"],
       url: null,
-      comingSoon: true,
+      onOpenDemo: () => setIsBillingModalOpen(true),
+      whatsappMessage:
+        "Hi StudioXYZ! I saw your Commercial Cloud Billing & ERP deployment on your site. I need a custom billing webapp for my business. Can we discuss pricing and timeline?",
       visualPreview: (
-        <div className="rounded-xl border border-slate-200/90 bg-white overflow-hidden shadow-sm">
+        <div
+          onClick={() => setIsBillingModalOpen(true)}
+          className="rounded-xl border border-slate-200/90 bg-white overflow-hidden shadow-sm cursor-pointer group hover:border-blue-400 transition-all"
+        >
           {/* Header */}
           <div className="bg-slate-100/90 border-b border-slate-200 px-3 py-2 flex items-center justify-between text-xs">
             <div className="flex items-center gap-1.5">
@@ -84,8 +94,9 @@ export default function Portfolio() {
             <div className="bg-white border border-slate-200 rounded px-2 py-0.5 text-[10px] font-mono text-slate-600">
               erp.studioxyz.cloud
             </div>
-            <span className="text-[9px] font-bold text-blue-600 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded">
-              CLOUD SYNCED
+            <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-mono flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Interactive Demo
             </span>
           </div>
 
@@ -98,7 +109,7 @@ export default function Portfolio() {
                   Tax Invoice #INV-2024-108
                 </span>
                 <span className="text-[10px] text-emerald-600 font-semibold font-mono">
-                  ✓ Backed Up to Cloud
+                  ✓ 12,000+ Synced
                 </span>
               </div>
               <div className="bg-white p-2.5 rounded-lg border border-slate-200/80 text-[11px] space-y-1">
@@ -113,9 +124,9 @@ export default function Portfolio() {
               </div>
             </div>
 
-            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-[10px] text-emerald-800 flex items-center justify-between font-medium">
-              <span>📲 WhatsApp PDF Sent &middot; 0 Paper Lost</span>
-              <span className="text-emerald-700 font-bold font-mono">Active</span>
+            <div className="bg-blue-600 text-white rounded-lg p-2 text-[10px] flex items-center justify-between font-semibold shadow-xs group-hover:bg-blue-700 transition-colors">
+              <span>⚡ Click to launch interactive billing demo</span>
+              <span>Test Now &rarr;</span>
             </div>
           </div>
         </div>
@@ -184,6 +195,11 @@ export default function Portfolio() {
 
   return (
     <section id="work" ref={ref} className="py-12 px-6 relative">
+      <BillingDemoModal
+        isOpen={isBillingModalOpen}
+        onClose={() => setIsBillingModalOpen(false)}
+      />
+
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
@@ -201,7 +217,7 @@ export default function Portfolio() {
             </h2>
           </div>
           <p className="text-slate-600 text-xs sm:text-sm max-w-md leading-relaxed font-normal">
-            Every card renders the real, active deployment live inside the browser window. Click any preview to explore the live website.
+            Every card renders the real, active deployment live inside the browser window. Click any preview to explore or test the working software.
           </p>
         </div>
 
@@ -240,8 +256,10 @@ export default function Portfolio() {
                   </span>
                   <span
                     className={`px-2 py-0.5 rounded-full border shrink-0 ${
-                      project.type === "Product Lab"
+                      project.type === "Production Deployment"
                         ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                        : project.type === "Product Lab"
+                        ? "bg-indigo-50 text-indigo-700 border-indigo-200"
                         : project.type === "Hardware R&D"
                         ? "bg-purple-50 text-purple-700 border-purple-200"
                         : "bg-blue-50 text-blue-700 border-blue-200"
@@ -265,7 +283,7 @@ export default function Portfolio() {
                 </p>
               </div>
 
-              {/* Tags and Live URL */}
+              {/* Tags and Live URL or Action */}
               <div className="mt-4 pt-3 border-t border-slate-100">
                 <div className="flex flex-wrap gap-1.5 mb-2.5">
                   {project.tags.map((tag) => (
@@ -288,6 +306,29 @@ export default function Portfolio() {
                     <span>Open full website</span>
                     <ExternalLink size={12} />
                   </a>
+                ) : project.onOpenDemo ? (
+                  <div className="flex items-center justify-between pt-1">
+                    <button
+                      onClick={project.onOpenDemo}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 cursor-pointer"
+                    >
+                      <Zap size={13} className="text-amber-500" />
+                      <span>⚡ Test Live Interactive Demo</span>
+                    </button>
+                    {project.whatsappMessage && (
+                      <a
+                        href={`https://wa.me/917569965052?text=${encodeURIComponent(
+                          project.whatsappMessage
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-600 hover:text-emerald-700 p-1"
+                        title="Chat about this billing system on WhatsApp"
+                      >
+                        <MessageSquare size={15} />
+                      </a>
+                    )}
+                  </div>
                 ) : (
                   <span className="text-[10px] text-slate-400 font-mono">
                     Live demo on request

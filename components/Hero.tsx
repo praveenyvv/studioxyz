@@ -23,7 +23,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
             </span>
             <span className="text-xs font-semibold text-slate-700">
-              Software &amp; Hardware Engineering Studio &middot; Visakhapatnam
+              Software &amp; Systems Engineering Studio &middot; Visakhapatnam
             </span>
           </motion.div>
 
@@ -51,7 +51,7 @@ export default function Hero() {
             transition={{ duration: 0.55, delay: 0.15 }}
             className="text-base sm:text-lg text-slate-600 max-w-xl mb-6 leading-relaxed font-normal"
           >
-            From multi-portal eCommerce and automated WhatsApp CRM to cross-platform mobile apps, cloud ERPs, and industrial IoT — we build reliable, production-ready systems for startups and growing enterprises.
+            From custom cloud billing webapps &amp; ERPs to automated WhatsApp CRM, cross-platform mobile apps, and industrial IoT — we build reliable, production-grade software that eliminates daily chaos.
           </motion.p>
 
           {/* CTAs */}
