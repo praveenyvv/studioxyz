@@ -63,10 +63,10 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" ref={ref} className="py-24 px-6 relative bg-slate-50/60 border-y border-slate-200/70">
+    <section id="services" ref={ref} className="py-14 px-6 relative bg-slate-50/60 border-y border-slate-200/70">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8">
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-700 uppercase tracking-wider mb-4">
             Our Service Suite
           </div>

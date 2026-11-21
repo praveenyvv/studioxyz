@@ -37,7 +37,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" ref={ref} className="py-24 px-6 relative">
+    <section id="about" ref={ref} className="py-10 px-6 relative">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: The Narrative & Soul */}

@@ -31,7 +31,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-slate-200 bg-white py-14 px-6 relative">
+    <footer className="border-t border-slate-200 bg-white py-8 px-6 relative">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         {/* Brand */}
         <div>
@@ -88,7 +88,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 font-normal">
+      <div className="max-w-6xl mx-auto mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 font-normal">
         <div>&copy; {year} StudioXYZ &middot; Visakhapatnam, Andhra Pradesh, India.</div>
         <div>Engineered with precision &middot; Built for real human relief.</div>
       </div>

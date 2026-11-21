@@ -389,9 +389,9 @@ export default function ServicesTicker() {
   const doubledSecond = [...secondHalf, ...secondHalf];
 
   return (
-    <section id="services-ticker" className="py-20 overflow-hidden">
+    <section id="services-ticker" className="py-10 overflow-hidden">
       {/* Section header */}
-      <div className="max-w-6xl mx-auto px-6 mb-10 text-center">
+      <div className="max-w-6xl mx-auto px-6 mb-6 text-center">
         <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-700 uppercase tracking-wider mb-4">
           Full Capability Suite · 20+ Services
         </div>

@@ -30,7 +30,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-24 px-6 relative bg-white">
+    <section id="contact" ref={ref} className="py-10 px-6 relative bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct Outreach & Trust */}
