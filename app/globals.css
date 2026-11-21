@@ -15,29 +15,55 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar for light theme */
-::-webkit-scrollbar {
-  width: 8px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+::selection { background: #2563eb; color: #fff; }
+
+/* Ticker scroll animations */
+@keyframes ticker-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+@keyframes ticker-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+.ticker-track-left {
+  display: flex;
+  width: max-content;
+  animation: ticker-left 35s linear infinite;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.ticker-track-right {
+  display: flex;
+  width: max-content;
+  animation: ticker-right 40s linear infinite;
+}
+.ticker-track-left:hover,
+.ticker-track-right:hover {
+  animation-play-state: paused;
 }
 
-/* Selection color */
-::selection {
-  background: #2563eb;
-  color: #ffffff;
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-/* Subtle background pattern helper */
-.bg-subtle-mesh {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Floating mockup bob animations */
+@keyframes bob-slow {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(0.5deg); }
 }
+@keyframes bob-medium {
+  0%, 100% { transform: translateY(0px) rotate(1deg); }
+  50%       { transform: translateY(-8px) rotate(-0.5deg); }
+}
+@keyframes bob-fast {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+.bob-slow   { animation: bob-slow 6s ease-in-out infinite; }
+.bob-medium { animation: bob-medium 5s ease-in-out infinite; }
+.bob-fast   { animation: bob-fast 4s ease-in-out infinite; }

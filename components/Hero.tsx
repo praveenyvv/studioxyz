@@ -1,140 +1,121 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Cpu, Layers, ShoppingBag, Database } from "lucide-react";
-
-const capabilities = [
-  { icon: Database, label: "Cloud ERP & Operations" },
-  { icon: Cpu, label: "Industrial IoT & Hardware" },
-  { icon: ShoppingBag, label: "E-Commerce Engines" },
-  { icon: Layers, label: "High-Impact Digital Brand Sites" },
-];
+import { ArrowUpRight, ArrowDown } from "lucide-react";
+import HeroMockups from "./HeroMockups";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[92vh] flex flex-col items-center justify-center px-6 pt-28 pb-16 overflow-hidden">
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Entry Animation: Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border border-slate-200/90 shadow-xs rounded-full px-4 py-1.5 mb-7"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
-          </span>
-          <span className="text-xs font-semibold text-slate-700 tracking-wide">
-            Engineering Studio &middot; Visakhapatnam, India
-          </span>
-        </motion.div>
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 pt-28 pb-16">
+      <HeroMockups />
 
-        {/* Entry Animation: Main Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-950 leading-[1.08] mb-6"
-          style={{ fontFamily: "var(--font-space-grotesk)" }}
-        >
-          We find the friction.
-          <br />
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
-            We engineer the fix.
-          </span>
-        </motion.h1>
-
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-9 leading-relaxed font-normal"
-        >
-          We are a team of software &amp; hardware engineers. We design and build{" "}
-          <strong className="text-slate-800 font-semibold">custom ERP workflows, IoT telemetry, high-converting eCommerce</strong>, and digital flagship platforms that eliminate everyday chaos and unlock growth.
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14"
-        >
-          <a
-            href="#solutions"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-medium text-sm px-6 py-3.5 rounded-full hover:bg-blue-700 transition-all duration-200 shadow-md shadow-blue-500/20"
+      {/* Left content — takes ~55% on desktop */}
+      <div className="relative z-20 max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-8 items-center">
+        <div className="lg:col-span-7">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md border border-slate-200/80 shadow-sm rounded-full px-4 py-1.5 mb-6"
           >
-            <span>Explore Solutions</span>
-            <ArrowUpRight size={16} />
-          </a>
-          <a
-            href="#work"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-slate-700 font-medium text-sm px-6 py-3.5 rounded-full border border-slate-200/90 hover:bg-slate-50 hover:text-slate-950 transition-all duration-200 shadow-xs"
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
+            </span>
+            <span className="text-xs font-semibold text-slate-700">
+              Software &amp; Hardware Engineering · Visakhapatnam, India
+            </span>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="text-4xl sm:text-5xl xl:text-6xl font-bold tracking-tight text-slate-950 leading-[1.1] mb-5"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            <span>View 6+ Projects</span>
-          </a>
-        </motion.div>
+            We engineer the
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              software your startup
+            </span>
+            <br />
+            actually needs.
+          </motion.h1>
 
-        {/* Quick Capability Pills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto"
-        >
-          {capabilities.map((cap) => {
-            const Icon = cap.icon;
-            return (
-              <div
-                key={cap.label}
-                className="inline-flex items-center gap-2 bg-white/70 backdrop-blur-md border border-slate-200/80 px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 shadow-2xs"
-              >
-                <Icon size={14} className="text-blue-600" />
-                <span>{cap.label}</span>
-              </div>
-            );
-          })}
-        </motion.div>
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+            className="text-base sm:text-lg text-slate-600 max-w-xl mb-8 leading-relaxed"
+          >
+            From multi-portal eCommerce and CRM automation to cross-platform apps and
+            IoT hardware — we build{" "}
+            <strong className="text-slate-800 font-semibold">scalable, integrated systems</strong>{" "}
+            for startups and growing businesses that want real traction, not just a website.
+          </motion.p>
 
-        {/* Trust Metrics Bar */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.55 }}
-          className="mt-16 pt-8 border-t border-slate-200/70 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-        >
-          {[
-            { value: "6+", label: "Completed Projects", hint: "Deployed & active" },
-            { value: "3", label: "Core Engineers", hint: "Software & Hardware" },
-            { value: "3+ Yrs", label: "Combined R&D", hint: "Visakhapatnam studio" },
-            { value: "End-to-End", label: "Full Ownership", hint: "Sensors to cloud" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center sm:text-left">
-              <div
-                className="text-2xl sm:text-3xl font-bold text-slate-950 tracking-tight"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
-                {stat.value}
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.22 }}
+            className="flex flex-wrap gap-3 mb-10"
+          >
+            <a
+              href="#services-ticker"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-blue-500/25 transition-all duration-200"
+            >
+              <span>See All 20+ Services</span>
+              <ArrowUpRight size={16} />
+            </a>
+            <a
+              href="#work"
+              className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm px-6 py-3.5 rounded-full border border-slate-200/90 shadow-sm transition-all duration-200"
+            >
+              View Projects
+            </a>
+          </motion.div>
+
+          {/* Trust bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8 border-t border-slate-200/70"
+          >
+            {[
+              { val: "6+", label: "Live Deployments" },
+              { val: "20+", label: "Capabilities" },
+              { val: "3yr", label: "Engineering R&D" },
+              { val: "Lakhs", label: "Records Handled" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-2xl font-bold text-slate-950" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                  {s.val}
+                </div>
+                <div className="text-[11px] text-slate-500 font-medium">{s.label}</div>
               </div>
-              <div className="text-xs font-semibold text-slate-700 mt-0.5">{stat.label}</div>
-              <div className="text-[11px] text-slate-600">{stat.hint}</div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Spacer col for mockups on desktop */}
+        <div className="hidden lg:block lg:col-span-5" />
       </div>
 
-      {/* Gentle Scroll Prompt */}
+      {/* Scroll hint */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 }}
-        transition={{ delay: 1 }}
-        className="mt-10 text-slate-600 flex flex-col items-center gap-1"
+        animate={{ opacity: 0.6 }}
+        transition={{ delay: 1.1 }}
+        className="relative z-20 mt-10 flex flex-col items-center gap-1 text-slate-500"
       >
-        <span className="text-[10px] uppercase font-mono tracking-widest text-slate-600">Scroll down</span>
-        <ArrowDown size={14} className="animate-bounce" />
+        <span className="text-[9px] uppercase font-mono tracking-widest">scroll to explore</span>
+        <ArrowDown size={13} className="animate-bounce" />
       </motion.div>
     </section>
   );

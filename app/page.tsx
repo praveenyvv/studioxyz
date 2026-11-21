@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import ServicesTicker from "@/components/ServicesTicker";
 import Solutions from "@/components/Solutions";
-import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import About from "@/components/About";
 import Process from "@/components/Process";
@@ -16,8 +16,8 @@ export default function Home() {
       <AnimatedBackground />
       <Navbar />
       <Hero />
+      <ServicesTicker />
       <Solutions />
-      <Services />
       <Portfolio />
       <About />
       <Process />
